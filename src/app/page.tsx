@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { TourCard } from "@/components/ui/tour-card";
 import Link from "next/link";
-import { ArrowRight, Globe, Compass, Users, MapPin, Calendar, Search, Star } from "lucide-react";
+import { ArrowRight, Globe, Compass, Users, MapPin, Calendar, Phone, Star } from "lucide-react";
 import Image from "next/image";
 
 // Placeholder data for tours
@@ -124,10 +124,12 @@ export default function Home() {
               </div>
             </div>
 
-            <Button size="lg" className="w-full sm:w-auto h-14 sm:h-16 px-8 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/25 mt-2 sm:mt-0 transition-transform hover:scale-[1.02]">
-              <Search className="w-5 h-5 sm:mr-2" />
-              <span className="hidden sm:inline font-medium">Find Tours</span>
-            </Button>
+            <Link href="/contact" className="w-full sm:w-auto mt-2 sm:mt-0">
+              <Button size="lg" className="w-full h-14 sm:h-16 px-8 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/25 transition-transform hover:scale-[1.02]">
+                <Phone className="w-5 h-5 sm:mr-2" />
+                <span className="hidden sm:inline font-medium">Book a Call</span>
+              </Button>
+            </Link>
           </div>
         </motion.div>
       </section>
