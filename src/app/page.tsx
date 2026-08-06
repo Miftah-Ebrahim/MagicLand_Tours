@@ -135,7 +135,7 @@ export default function Home() {
       </section>
 
       {/* EDITORIAL DESTINATION GRID */}
-      <section className="py-24 sm:py-32 px-4 sm:px-6 max-w-7xl mx-auto w-full">
+      <section className="py-16 sm:py-32 px-4 sm:px-6 max-w-7xl mx-auto w-full">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
@@ -222,7 +222,7 @@ export default function Home() {
       </section>
 
       {/* THE MAGICLAND DIFFERENCE (Split Screen Layout) */}
-      <section className="py-24 sm:py-32 bg-secondary text-white relative overflow-hidden">
+      <section className="py-16 sm:py-32 bg-secondary text-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           
           {/* Image Side with Parallax feel */}
@@ -279,7 +279,7 @@ export default function Home() {
       </section>
 
       {/* TESTIMONIALS SECTION */}
-      <section className="py-24 sm:py-32 px-4 sm:px-6 max-w-7xl mx-auto w-full">
+      <section className="py-16 sm:py-32 px-4 sm:px-6 max-w-7xl mx-auto w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -327,11 +327,11 @@ export default function Home() {
       </section>
 
       {/* REFINED SCROLL VIDEO SECTION */}
-      <section ref={videoRef} className="relative h-[120vh] bg-background flex items-center justify-center overflow-hidden">
+      <section ref={videoRef} className="relative h-[150vh] bg-background flex items-center justify-center overflow-hidden">
         <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
           <motion.div 
             style={{ scale, opacity }}
-            className="relative w-full max-w-6xl aspect-video rounded-3xl overflow-hidden shadow-2xl mx-4 sm:mx-6"
+            className="relative w-full max-w-6xl aspect-[4/5] sm:aspect-video rounded-3xl overflow-hidden shadow-2xl mx-4 sm:mx-6"
           >
             <video 
               autoPlay 
