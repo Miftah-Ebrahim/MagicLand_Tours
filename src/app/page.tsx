@@ -34,8 +34,39 @@ const FEATURED_TOURS = [
     price: "$850",
     image: "/images/1.png",
   },
+  {
+    slug: "wenchi-crater-lake",
+    title: "Wenchi Crater Lake Escape",
+    location: "Oromia Region",
+    duration: "2 Days",
+    price: "$299",
+    image: "/images/wenchi.png",
+  },
+  {
+    slug: "hawassa-resort",
+    title: "Lake Hawassa Luxury Retreat",
+    location: "Sidama Region",
+    duration: "3 Days",
+    price: "$450",
+    image: "/images/hawassa.png",
+  },
+  {
+    slug: "addis-ababa-city",
+    title: "Addis Ababa City Tour",
+    location: "Addis Ababa",
+    duration: "1 Day",
+    price: "$150",
+    image: "/images/addis.png",
+  },
+  {
+    slug: "entoto-park",
+    title: "Entoto Natural Park",
+    location: "Addis Ababa",
+    duration: "1 Day",
+    price: "$120",
+    image: "/images/entoto.png",
+  },
 ];
-
 export default function Home() {
   const videoRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -157,67 +188,86 @@ export default function Home() {
           </Link>
         </div>
 
-        {/* Asymmetrical Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 h-auto md:h-[600px]">
-          {/* Main Large Card */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="md:col-span-7 h-[400px] md:h-full group relative overflow-hidden rounded-3xl"
-          >
-            <Link href={`/tours/${FEATURED_TOURS[0].slug}`} className="block w-full h-full">
-              <Image 
-                src={FEATURED_TOURS[0].image} 
-                alt={FEATURED_TOURS[0].title}
-                fill
-                className="object-cover transition-transform duration-1000 group-hover:scale-110"
-                sizes="(max-width: 768px) 100vw, 60vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+        {/* Asymmetrical Grid System */}
+        <div className="flex flex-col gap-6 sm:gap-8">
+          
+          {/* Row 1: Large Left, 2 Small Right */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 h-auto md:h-[600px]">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="md:col-span-7 h-[400px] md:h-full group relative overflow-hidden rounded-3xl"
+            >
+              <Link href={`/tours/${FEATURED_TOURS[0].slug}`} className="block w-full h-full">
+                <Image src={FEATURED_TOURS[0].image} alt={FEATURED_TOURS[0].title} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" sizes="(max-width: 768px) 100vw, 60vw" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 p-8 sm:p-12 text-white transform transition-transform duration-500 group-hover:-translate-y-2">
+                  <span className="bg-primary px-3 py-1 text-xs font-bold tracking-wider uppercase rounded-full mb-4 inline-block">Signature Tour</span>
+                  <h3 className="text-3xl sm:text-4xl font-serif font-bold mb-2">{FEATURED_TOURS[0].title}</h3>
+                  <p className="text-white/80 flex items-center gap-2"><MapPin className="w-4 h-4 text-primary" /> {FEATURED_TOURS[0].location}</p>
+                </div>
+              </Link>
+            </motion.div>
+            <div className="md:col-span-5 flex flex-col gap-6 sm:gap-8 h-auto md:h-full">
+              {[FEATURED_TOURS[1], FEATURED_TOURS[2]].map((tour, idx) => (
+                <motion.div key={tour.slug} initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 + (idx * 0.2) }} className="flex-1 h-[300px] md:h-1/2 group relative overflow-hidden rounded-3xl">
+                  <Link href={`/tours/${tour.slug}`} className="block w-full h-full">
+                    <Image src={tour.image} alt={tour.title} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" sizes="(max-width: 768px) 100vw, 40vw" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                    <div className="absolute bottom-0 left-0 p-6 sm:p-8 text-white transform transition-transform duration-500 group-hover:-translate-y-2">
+                      <h3 className="text-2xl font-serif font-bold mb-2">{tour.title}</h3>
+                      <p className="text-white/80 text-sm flex items-center gap-2"><MapPin className="w-3 h-3 text-primary" /> {tour.location}</p>
+                    </div>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Row 2: 2 Small Left, Large Right */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 h-auto md:h-[600px]">
+            <div className="md:col-span-5 flex flex-col gap-6 sm:gap-8 h-auto md:h-full order-2 md:order-1">
+              {[FEATURED_TOURS[3], FEATURED_TOURS[4]].map((tour, idx) => (
+                <motion.div key={tour.slug} initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 + (idx * 0.2) }} className="flex-1 h-[300px] md:h-1/2 group relative overflow-hidden rounded-3xl">
+                  <Link href={`/tours/${tour.slug}`} className="block w-full h-full">
+                    <Image src={tour.image} alt={tour.title} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" sizes="(max-width: 768px) 100vw, 40vw" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                    <div className="absolute bottom-0 left-0 p-6 sm:p-8 text-white transform transition-transform duration-500 group-hover:-translate-y-2">
+                      <h3 className="text-2xl font-serif font-bold mb-2">{tour.title}</h3>
+                      <p className="text-white/80 text-sm flex items-center gap-2"><MapPin className="w-3 h-3 text-primary" /> {tour.location}</p>
+                    </div>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.1 }} className="md:col-span-7 h-[400px] md:h-full group relative overflow-hidden rounded-3xl order-1 md:order-2">
+              <Link href={`/tours/${FEATURED_TOURS[5].slug}`} className="block w-full h-full">
+                <Image src={FEATURED_TOURS[5].image} alt={FEATURED_TOURS[5].title} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" sizes="(max-width: 768px) 100vw, 60vw" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 p-8 sm:p-12 text-white transform transition-transform duration-500 group-hover:-translate-y-2">
+                  <span className="bg-primary px-3 py-1 text-xs font-bold tracking-wider uppercase rounded-full mb-4 inline-block">Urban Escape</span>
+                  <h3 className="text-3xl sm:text-4xl font-serif font-bold mb-2">{FEATURED_TOURS[5].title}</h3>
+                  <p className="text-white/80 flex items-center gap-2"><MapPin className="w-4 h-4 text-primary" /> {FEATURED_TOURS[5].location}</p>
+                </div>
+              </Link>
+            </motion.div>
+          </div>
+
+          {/* Row 3: Full Width Hero Card */}
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="w-full h-[400px] sm:h-[500px] group relative overflow-hidden rounded-3xl">
+            <Link href={`/tours/${FEATURED_TOURS[6].slug}`} className="block w-full h-full">
+              <Image src={FEATURED_TOURS[6].image} alt={FEATURED_TOURS[6].title} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" sizes="100vw" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
               <div className="absolute bottom-0 left-0 p-8 sm:p-12 text-white transform transition-transform duration-500 group-hover:-translate-y-2">
-                <span className="bg-primary px-3 py-1 text-xs font-bold tracking-wider uppercase rounded-full mb-4 inline-block">
-                  Signature Tour
-                </span>
-                <h3 className="text-3xl sm:text-4xl font-serif font-bold mb-2">{FEATURED_TOURS[0].title}</h3>
-                <p className="text-white/80 flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-primary" /> {FEATURED_TOURS[0].location}
-                </p>
+                <span className="bg-primary px-3 py-1 text-xs font-bold tracking-wider uppercase rounded-full mb-4 inline-block">Resort Experience</span>
+                <h3 className="text-3xl sm:text-5xl font-serif font-bold mb-2">{FEATURED_TOURS[6].title}</h3>
+                <p className="text-white/80 flex items-center gap-2"><MapPin className="w-4 h-4 text-primary" /> {FEATURED_TOURS[6].location}</p>
               </div>
             </Link>
           </motion.div>
 
-          {/* Stacked Small Cards */}
-          <div className="md:col-span-5 flex flex-col gap-6 sm:gap-8 h-auto md:h-full">
-            {[FEATURED_TOURS[1], FEATURED_TOURS[2]].map((tour, idx) => (
-              <motion.div 
-                key={tour.slug}
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.2 + (idx * 0.2) }}
-                className="flex-1 h-[300px] md:h-1/2 group relative overflow-hidden rounded-3xl"
-              >
-                <Link href={`/tours/${tour.slug}`} className="block w-full h-full">
-                  <Image 
-                    src={tour.image} 
-                    alt={tour.title}
-                    fill
-                    className="object-cover transition-transform duration-1000 group-hover:scale-110"
-                    sizes="(max-width: 768px) 100vw, 40vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                  <div className="absolute bottom-0 left-0 p-6 sm:p-8 text-white transform transition-transform duration-500 group-hover:-translate-y-2">
-                    <h3 className="text-2xl font-serif font-bold mb-2">{tour.title}</h3>
-                    <p className="text-white/80 text-sm flex items-center gap-2">
-                      <MapPin className="w-3 h-3 text-primary" /> {tour.location}
-                    </p>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
 
