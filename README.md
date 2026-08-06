@@ -20,7 +20,7 @@
 
 ---
 
-## ✨ Extraordinary Features
+## ✨ Features
 
 <table>
   <tr>
@@ -47,7 +47,7 @@
 
 ---
 
-## 🚀 Quick Start Guide
+##  Quick Start Guide
 
 Experience the magic locally on your development environment.
 
