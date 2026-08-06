@@ -212,7 +212,7 @@ export default function Home() {
             </motion.div>
             <div className="md:col-span-5 flex flex-col gap-6 sm:gap-8 h-auto md:h-full">
               {[FEATURED_TOURS[1], FEATURED_TOURS[2]].map((tour, idx) => (
-                <motion.div key={tour.slug} initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 + (idx * 0.2) }} className="flex-1 h-[300px] md:h-1/2 group relative overflow-hidden rounded-3xl">
+                <motion.div key={tour.slug} initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 + (idx * 0.2) }} className="w-full h-[300px] md:h-auto md:flex-1 group relative overflow-hidden rounded-3xl">
                   <Link href={`/tours/${tour.slug}`} className="block w-full h-full">
                     <Image src={tour.image} alt={tour.title} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" sizes="(max-width: 768px) 100vw, 40vw" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
@@ -230,7 +230,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 h-auto md:h-[600px]">
             <div className="md:col-span-5 flex flex-col gap-6 sm:gap-8 h-auto md:h-full order-2 md:order-1">
               {[FEATURED_TOURS[3], FEATURED_TOURS[4]].map((tour, idx) => (
-                <motion.div key={tour.slug} initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 + (idx * 0.2) }} className="flex-1 h-[300px] md:h-1/2 group relative overflow-hidden rounded-3xl">
+                <motion.div key={tour.slug} initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 + (idx * 0.2) }} className="w-full h-[300px] md:h-auto md:flex-1 group relative overflow-hidden rounded-3xl">
                   <Link href={`/tours/${tour.slug}`} className="block w-full h-full">
                     <Image src={tour.image} alt={tour.title} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" sizes="(max-width: 768px) 100vw, 40vw" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
